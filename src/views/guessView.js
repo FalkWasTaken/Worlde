@@ -10,7 +10,7 @@ function GuessView(props) {
 
     function renderChar(c) {
         id++;
-        return <span key={id} className="guessGray">{c}</span>
+        return <p key={id} className="guessGray">{c}</p>
     }
 
     return <div>
