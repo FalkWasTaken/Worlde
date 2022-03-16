@@ -5,12 +5,20 @@ function GuessView(props) {
     let id = 0;
 
     function renderGuess(guess) {
-        return <div key={id}>{guess.split("").map(renderChar)}</div>
+        let full = guess
+        while (full.length < 5) {
+            full += " "
+        }
+        return <div key={id}>{full.split("").map(renderChar)}</div>
     }
 
     function renderChar(c) {
         id++;
-        return <p key={id} className="guessGray">{c}</p>
+        let type = "guessEmpty";
+        //if (c !== " ") {
+        //    type = "guessGray";
+        //}
+        return <button key={id} className={type}>{c}</button>
     }
 
     return <div>

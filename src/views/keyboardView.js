@@ -8,17 +8,17 @@ const LOWER = "ZXCVBNM".split('')
 function KeyboardView(props) {
 
     function renderChar(c) {
-        //return <span class={props.keyColor[c]}>{c}</span>
-        return <button key={c} className="keyLight">{c}</button>
+        return <button key={c} className={props.keyStatus[c]} onClick={() => props.addChar(c)}>{c}</button>
+        //return <button key={c} className="keyLight">{c}</button>
     }
 
     return <div>
         <div>{UPPER.map(renderChar)}</div>
         <div>{MIDDLE.map(renderChar)}</div>
         <div>
-            <button className="enter">ENTER</button>
+            <button className="enter" onClick={() => props.validate()}>ENTER</button>
             {LOWER.map(renderChar)}
-            <button className="keyLight">←</button>
+            <button className="keyLight" onClick={() => props.removeChar()}>←</button>
         </div>
     </div>
 }
