@@ -1,24 +1,45 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import GuessView from '../views/guessView'
 
 function GuessPresenter(props) {
     const game = props.game;
-    const [guesses, setGuesses] = React.useState(() => game.guesses)
+    const [guesses, setGuesses] = useState(() => game.guesses)
+    const [status, setStatus] = useState(() => game.guessStatus)
+    const [error, setError] = useState()
 
-    function guessesObs(payload) {
-        if (payload.newGuesses) {
-            setGuesses(payload.newGuesses)
+    const observers = [
+        function guessesObs(payload) {
+            const newGuesses = payload.newGuesses
+            if (newGuesses) {
+                setGuesses([...newGuesses])
+                setError(undefined)
+            }
+        },
+
+        function statusObs(payload) {
+            if (payload.newGuessStatus) {
+                setStatus(payload.newGuessStatus.map(l => l.map(string => string.slice())))
+            }
+        },
+
+        function errorObs(payload) {
+            if (payload.error) {
+                setError(payload.error)
+            }
         }
-    }
+    ]
 
     function onCreate() {
-        game.addObserver(guessesObs)
-        return () => game.removeObserver(guessesObs)
+        game.addObservers(observers)
+        return () => {game.removeObservers(observers)}
     }
 
-    React.useEffect(onCreate, [])
+    useEffect(onCreate, []) 
 
-    return <GuessView guesses={guesses}/>
+    return <div className="guessContainer">
+        {error ? <span className="error">{error}</span> : ""}
+        <GuessView currentRow={game.currentGuess} guesses={guesses} status={status} rowClass={error ? "errorRow" : "guessRow"}/>
+    </div>
 }
 
 export default GuessPresenter

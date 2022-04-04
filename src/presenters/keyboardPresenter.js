@@ -7,7 +7,7 @@ function Keyboard(props) {
 
     function keyStatObs(payload) {
         if (payload.newStatus) {
-            setStatus(newStatus)
+            setStatus({...payload.newStatus})
         }
     }
 
@@ -18,7 +18,7 @@ function Keyboard(props) {
 
     React.useEffect(onCreate, [])
 
-    return <KeyboardView addChar={game.addChar} removeChar={game.removeChar} validate={game.validate} keyStatus={keyStatus}/>
+    return <KeyboardView addChar={c => game.addChar(c)} removeChar={() => game.removeChar()} validate={() => game.validate()} keyStatus={keyStatus}/>
 }
 
 export default Keyboard

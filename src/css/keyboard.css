@@ -1,0 +1,116 @@
+.keyboard {
+    width: 95%;
+    max-width: 700px;
+}
+
+.keyRow {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.keyLight, .keyDark, .keyYellow, .keyGreen, .wideKey {
+    margin: 0.5%;
+    border: none;
+    border-radius: 4px;
+    width: 7%;
+    aspect-ratio: 1 / 1.25;
+    color: white;
+    cursor: pointer; 
+    text-align: center;
+}
+
+.wideKey {
+    width: 12%;
+    aspect-ratio: 1.4 / 1;
+}
+
+.keyLight, .wideKey {
+    color: black;
+    background-color: rgb(226, 226, 226);
+}
+
+.keyLight:active, .wideKey:active {
+    background-color: rgb(207, 207, 207);
+}
+
+.keyDark {
+    background-color: rgb(131, 131, 131);
+}
+
+.keyDark:active {
+    background-color: rgb(117, 117, 117);
+}
+
+.keyYellow {
+    background-color: rgb(197, 197, 90);
+}
+
+.keyYellow:active {
+    background-color: rgb(177, 177, 83);
+}
+
+.keyGreen {
+    background-color: rgb(103, 182, 103);
+}
+
+.keyGreen:active {
+    background-color: rgb(92, 165, 92);
+}
+
+/*
+@media screen and (max-width: 400px) {
+    .keyboard {
+        padding-left: 0.2em;
+        width: 100px;
+    }
+
+    .keyRow {
+        width: 100px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .keyLight, .keyDark, .keyYellow, .keyGreen, .wideKey {
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: medium;
+        width: 1.7em;
+        height: 2.7em;
+        margin: 0.1em;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .keyLight, .wideKey {
+        color: black;
+        background-color: rgb(226, 226, 226);
+    }
+
+    .wideKey {
+        width: 3.6em;
+    }
+}
+*/
+
+@media screen and (max-width: 450px) {
+
+    .keyRow {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .keyLight, .keyDark, .keyYellow, .keyGreen, .wideKey {
+        width: 10%;
+        min-width: auto;
+        aspect-ratio: 1 / 1.4;
+        font-size: 100%;
+    }
+    
+    .wideKey {
+        width: 4em;
+        aspect-ratio: 1.4 / 1;
+    }
+
+}

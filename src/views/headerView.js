@@ -1,9 +1,9 @@
 import React from 'react';
-import '../styles.css'
+import '../css/header.css'
 
 function HeaderView(props) {
-    return <div>
-        <span className="h1">Worlde</span>
+    return <div className="header">
+        <span className="h1">Wordle</span>
         <span className="sup">(SWE)</span>
     </div>
 }

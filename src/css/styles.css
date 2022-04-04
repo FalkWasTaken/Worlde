@@ -1,0 +1,27 @@
+
+@keyframes in-out {
+    0% {opacity: 0;}
+    15% {opacity: 0.75;}
+    70% {opacity: 0.75;}
+    100% {opacity: 0;}
+}
+
+.error {
+    opacity: 0;
+    border-radius: 6px;
+    z-index: 1;
+    background-color: black;
+    color: white;
+    padding: 3px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    height: 1.7em;
+    width: 10em;
+    font-size: larger;
+    line-height: 1.7em;
+    animation: in-out 2.5s ease-in-out;
+}

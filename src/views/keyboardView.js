@@ -1,5 +1,6 @@
 import React from "react";
-import '../styles.css'
+import '../css/guesses.css'
+import '../css/keyboard.css'
 
 const UPPER = "QWERTYUIOPÅ".split('')
 const MIDDLE = "ASDFGHJKLÖÄ".split('')
@@ -9,16 +10,15 @@ function KeyboardView(props) {
 
     function renderChar(c) {
         return <button key={c} className={props.keyStatus[c]} onClick={() => props.addChar(c)}>{c}</button>
-        //return <button key={c} className="keyLight">{c}</button>
     }
 
-    return <div>
-        <div>{UPPER.map(renderChar)}</div>
-        <div>{MIDDLE.map(renderChar)}</div>
-        <div>
-            <button className="enter" onClick={() => props.validate()}>ENTER</button>
+    return <div className="keyboard">
+        <div className="keyRow">{UPPER.map(renderChar)}</div>
+        <div className="keyRow">{MIDDLE.map(renderChar)}</div>
+        <div className="keyRow">
+            <button className="wideKey" onClick={() => props.validate()}>ENTER</button>
             {LOWER.map(renderChar)}
-            <button className="keyLight" onClick={() => props.removeChar()}>←</button>
+            <button className="wideKey" onClick={() => props.removeChar()}>←</button>
         </div>
     </div>
 }

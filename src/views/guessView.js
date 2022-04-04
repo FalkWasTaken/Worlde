@@ -1,25 +1,45 @@
 import React from "react";
-import "../styles.css"
+import "../css/guesses.css"
+
+function flipTile(c, type, id) {
+    let flipType = "flip" + type.slice(5)
+    return <span key={id} className="flipContainer">
+        <div className={"flip" + id}>
+            <button className="flipFront">{c}</button>
+            <button className={flipType}>{c}</button>
+        </div>
+    </span>
+}
+
 
 function GuessView(props) {
-    let id = 0;
+    let rowNo = -1;
 
-    function renderGuess(guess) {
+    function renderGuess(guess, guessNo) {
+        rowNo++;
+
         let full = guess
         while (full.length < 5) {
-            full += " "
+            full += "#"
         }
-        return <div key={id}>{full.split("").map(renderChar)}</div>
+
+        let charNo = 0;
+
+        function renderChar(c, status) {
+            charNo++;
+            let type = status
+            if (status === "guessEmpty" && c !== "#")
+                type = "guessWhite"
+            if (rowNo + 1 === props.currentRow && type !== "guessEmpty" && type !== "guessWhite") {
+                return flipTile(c, type, charNo)
+            }
+            return <button key={charNo} className={type}>{c === "#" ? "" : c}</button>
+        }
+
+        return <div key={rowNo} className={rowNo === props.currentRow ? props.rowClass : "guessRow"}>{full.split("").map((c, i) => renderChar(c, props.status[guessNo][i]))}</div>
     }
 
-    function renderChar(c) {
-        id++;
-        let type = "guessEmpty";
-        //if (c !== " ") {
-        //    type = "guessGray";
-        //}
-        return <button key={id} className={type}>{c}</button>
-    }
+    
 
     return <div>
         {props.guesses.map(renderGuess)}
