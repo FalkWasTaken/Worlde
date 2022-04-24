@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "swordle",
+    "site": "swerdle",
     "public": "dist",
     "ignore": [
       "firebase.json",

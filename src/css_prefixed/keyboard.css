@@ -1,19 +1,31 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 .keyboard {
-    width: 95%;
     max-width: 700px;
-    padding: 0px;
-    margin: 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 95%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: auto auto auto;
+    grid-template-rows: auto auto auto;
 }
 
 .keyRow {
-    width: 100%;
+    width: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 .keyLight, .keyDark, .keyYellow, .keyGreen, .wideKey {
@@ -25,10 +37,19 @@
     aspect-ratio: 1 / 1.4;
     color: white;
     cursor: pointer; 
+    display: -webkit-box; 
+    display: -ms-flexbox; 
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
@@ -72,7 +93,10 @@
 
 @media only screen and (orientation: landscape) {
     .keyRow {
-        justify-content: center;
+        width: 100%;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
     }
 
     .keyLight, .keyDark, .keyYellow, .keyGreen, .wideKey {

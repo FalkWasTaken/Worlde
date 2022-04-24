@@ -1,37 +1,30 @@
 import _ from 'underscore'
+import { saveGame } from './firebaseUtils';
+import { getWord, VALID_WORDS } from './utils';
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ".split('')
-const VALID_WORDS = require('./valid.json');
-
-function getWord() {
-    const d = new Date()
-    const str = d.getFullYear().toString() + d.getMonth().toString() + d.getDate().toString()
-    return VALID_WORDS[hash(str) % VALID_WORDS.length]
-}
-
-function hash(str, seed = 0) {
-    let h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
-    for (let i = 0, ch; i < str.length; i++) {
-        ch = str.charCodeAt(i);
-        h1 = Math.imul(h1 ^ ch, 2654435761);
-        h2 = Math.imul(h2 ^ ch, 1597334677);
-    }
-    h1 = Math.imul(h1 ^ (h1>>>16), 2246822507) ^ Math.imul(h2 ^ (h2>>>13), 3266489909);
-    h2 = Math.imul(h2 ^ (h2>>>16), 2246822507) ^ Math.imul(h1 ^ (h1>>>13), 3266489909);
-    return 4294967296 * (2097151 & h2) + (h1>>>0);
-};
 
 class Game {
     constructor() {
         this.currentGuess = 0
         this.guesses = ["", "", "", "", "", ""]
         this.guessStatus = Array.from({length: 6}, () => Array(5).fill("guessEmpty"))
-        this.word = _.sample(VALID_WORDS)
-        //this.word = getWord()
+        //this.word = _.sample(VALID_WORDS)
+        this.word = getWord()
         this.charStatus = {}
         ALPHABET.forEach(c => this.charStatus[c] = "keyLight")
         this.observers = []
         this.haveWon = false
+    }
+
+    sync(state) {
+        this.guesses = [...state.guesses]
+        const currentGuess = state.guesses.filter(str => str != "").length
+        for (const i of Array(currentGuess).keys()) {
+            this.currentGuess = i
+            this.validate()
+          }
+        this.currentGuess = currentGuess
     }
 
     getCurrent() {
@@ -96,10 +89,11 @@ class Game {
             })
             this.notifyObservers({newStatus: this.charStatus, newGuessStatus: this.guessStatus})
             this.currentGuess++
+            saveGame(this.guesses)
         } else if (guess.length < 5) {
-            this.notifyObservers({error: "Not enough letters"})
+            this.notifyObservers({error: "För få bokstäver"})
         } else {
-            this.notifyObservers({error: "Not in word list"})
+            this.notifyObservers({error: "Kan inte hitta ordet"})
         }
     }
 

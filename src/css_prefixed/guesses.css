@@ -1,0 +1,227 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+.guessContainer {
+    width: 95%;
+    max-width: 500px;
+    margin-bottom: 0.5em;
+}
+
+.guessRow, .errorRow {
+    z-index: 0;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
+@-webkit-keyframes shake {
+    0% {-webkit-transform: translateX(0px);transform: translateX(0px)}
+    25% {-webkit-transform: translateX(6px);transform: translateX(6px)}
+    75% {-webkit-transform: translateX(-6px);transform: translateX(-6px)}
+    100% {-webkit-transform: translateX(0px);transform: translateX(0px)}
+}
+
+@keyframes shake {
+    0% {-webkit-transform: translateX(0px);transform: translateX(0px)}
+    25% {-webkit-transform: translateX(6px);transform: translateX(6px)}
+    75% {-webkit-transform: translateX(-6px);transform: translateX(-6px)}
+    100% {-webkit-transform: translateX(0px);transform: translateX(0px)}
+}
+
+.errorRow {
+    -webkit-animation: shake 0.15s ease-in-out;
+            animation: shake 0.15s ease-in-out;
+    -webkit-animation-iteration-count: 4;
+            animation-iteration-count: 4;
+}
+
+.guessEmpty, .guessWhite, .guessGray, .guessYellow, .guessGreen, .flipContainer {
+    width: 18%;
+    aspect-ratio: 1;
+    margin: 1%;
+    padding: 0px;
+    font-size: 2rem;
+    font-weight: bolder;
+    color: white;
+    border: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.guessEmpty {
+    border:2px solid rgb(226, 226, 226);
+    background-color: white;
+}
+
+@-webkit-keyframes letterPop {
+    from {width: 18%; margin: 1%}
+    to {width: 19%; margin: 0.5%}
+}
+
+@keyframes letterPop {
+    from {width: 18%; margin: 1%}
+    to {width: 19%; margin: 0.5%}
+}
+
+.guessWhite {
+    border: 2px solid rgb(131, 131, 131);
+    background-color: white;
+    color: black;
+    -webkit-animation: letterPop 0.1s alternate;
+            animation: letterPop 0.1s alternate;
+}
+
+.guessGray {
+    background-color: rgb(131, 131, 131);
+}
+
+.guessYellow {
+    background-color: rgb(197, 197, 90);
+}
+
+.guessGreen {
+    background-color: rgb(103, 182, 103);
+}
+
+
+@-webkit-keyframes flip {
+    from {-webkit-transform: rotateX(0deg);transform: rotateX(0deg)}
+    to {-webkit-transform: rotateX(180deg);transform: rotateX(180deg)}
+}
+
+
+@keyframes flip {
+    from {-webkit-transform: rotateX(0deg);transform: rotateX(0deg)}
+    to {-webkit-transform: rotateX(180deg);transform: rotateX(180deg)}
+}
+
+.flipContainer {
+    background-color: transparent;
+    -webkit-perspective: 1000px;
+            perspective: 1000px; /* Remove this if you don't want the 3D effect*/
+}
+
+/* This container is needed to position the front and back side */
+.flip1, .flip2, .flip3, .flip4, .flip5 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    -webkit-animation: flip 0.6s forwards;
+            animation: flip 0.6s forwards;
+}
+
+.flip1 {
+    -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+}
+
+.flip2 {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+}
+
+.flip3 {
+    -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s;
+}
+
+.flip4 {
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+}
+
+.flip5 {
+    -webkit-animation-delay: 0.8s;
+            animation-delay: 0.8s;
+}
+
+
+/* Position the front and back side */
+.flipFront, .flipGray, .flipYellow, .flipGreen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 2rem;
+    font-weight: bolder;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flipFront {
+    border: 2px solid rgb(131, 131, 131);
+    background-color: white;
+    color: black;
+}
+
+/* Style the back side */
+.flipGray {
+    color: white;
+    border: none;
+    background-color: rgb(131, 131, 131);
+    -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+}
+
+.flipYellow {
+    color: white;
+    border: none;
+    background-color: rgb(197, 197, 90);
+    -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+}
+
+.flipGreen {
+    color: white;
+    border: none;
+    background-color: rgb(103, 182, 103);
+    -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+}

@@ -1,10 +1,22 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 .header {
     width: 100%;
+    display: -ms-grid;
     display: grid;
-    align-items: center;
-    grid-template-areas: "a b c";
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+        grid-template-areas: "a b c";
     grid-auto-columns: 1fr;
-    column-gap: 2em;
+    -webkit-column-gap: 2em;
+       -moz-column-gap: 2em;
+            column-gap: 2em;
     margin-bottom: 0.3em;
 }
 
@@ -24,17 +36,27 @@
 }
 
 .title {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
     grid-area: b;
     text-shadow: 1px 1px 1px lightgrey;
 }
 
 .statButton {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
     grid-area: c;
     height: 30px;
     width: 30px;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
-    justify-content: center;
-    align-items: baseline;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
     background-color: white;
     border: 1px lightgrey solid;
     border-radius: 2px;

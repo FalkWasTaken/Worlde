@@ -1,0 +1,84 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+
+
+.statBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 13em;
+    /* bring your own prefixes */
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    z-index: 9;
+    background-color: white;
+    border: None;
+    -webkit-box-shadow: 3px 3px 10px -2px rgb(29, 29, 29);
+            box-shadow: 3px 3px 10px -2px rgb(29, 29, 29);
+    padding: 1em;
+}
+
+.statContent {
+    margin-top: 0.5em;
+    padding-top: 0.2em;
+    border-top: 1px solid lightgrey;
+}
+
+.statRow {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    line-height: 1em;
+}
+
+.barBorder {
+    background-color: lightgray;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    margin: 0.5em;
+    border: None;
+    width: 10em;
+    -webkit-box-align: left;
+        -ms-flex-align: left;
+            align-items: left;
+    height: 1.2em;
+}
+
+.statBar {
+    background-color: darkgray;
+    border: None;
+    height: 100%;
+    line-height: 1.2em;
+}
+
+.backButton {
+    border: None;
+    background-color: lightgrey;
+    width: 90%;
+    margin: 0.5em;
+}
+
+.backButton:hover {
+    background-color: rgb(196, 196, 196);
+}
+
+.backButton:active {
+    background-color: darkgrey;
+}

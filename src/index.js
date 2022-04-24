@@ -2,12 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './App';
+import { generateCookie } from './utils';
+import {syncGame} from './firebaseUtils';
+import fbConfig from './firebaseConfig'
+import firebase from 'firebase/app'
+require("babel-polyfill")
 
-let viewport = document.querySelector('meta[name="viewport"]');
-
-if ( viewport ) {
-  viewport.content = "initial-scale=1";
-  viewport.content = "width=device-width";
+if (!document.cookie) {
+  document.cookie = generateCookie()
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+firebase.initializeApp(fbConfig)
+
+syncGame().then(state => 
+  ReactDOM.render(<App state={state}/>, document.getElementById('root'))
+)
+
+

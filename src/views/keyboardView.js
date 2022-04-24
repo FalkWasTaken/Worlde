@@ -1,5 +1,4 @@
 import React from "react";
-import '../css/guesses.css'
 import '../css/keyboard.css'
 
 const UPPER = "QWERTYUIOPÅ".split('')

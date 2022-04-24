@@ -1,8 +1,7 @@
 .guessContainer {
     width: 95%;
     max-width: 500px;
-    /*margin-top: 3%;
-    margin-bottom: 3%;*/
+    margin-bottom: 0.5em;
 }
 
 .guessRow, .errorRow {
@@ -11,9 +10,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /*margin-left: 5%;
-    margin-right: 5%;*/
-    /*padding-left: 0.2em;*/
 }
 
 @keyframes shake {
@@ -28,15 +24,19 @@
     animation-iteration-count: 4;
 }
 
-.guessEmpty, .guessWhite, .guessGray, .guessYellow, .guessGreen {
+.guessEmpty, .guessWhite, .guessGray, .guessYellow, .guessGreen, .flipContainer {
     width: 18%;
     aspect-ratio: 1;
     margin: 1%;
-    text-align: center;
+    padding: 0px;
     font-size: 2rem;
     font-weight: bolder;
     color: white;
     border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .guessEmpty {
@@ -76,11 +76,6 @@
 
 .flipContainer {
     background-color: transparent;
-    width: 18%;
-    aspect-ratio: 1;
-    padding: 0px;
-    border: none;
-    margin: 1%;
     perspective: 1000px; /* Remove this if you don't want the 3D effect*/
 }
 
@@ -91,6 +86,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     transform-style: preserve-3d;
     animation: flip 0.6s forwards;
 }
@@ -121,8 +117,10 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    line-height: 100%;
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     font-size: 2rem;
     font-weight: bolder;
     -webkit-backface-visibility: hidden; /* Safari */
@@ -157,23 +155,3 @@
     background-color: rgb(103, 182, 103);
     transform: rotateX(180deg);
 }
-
-/*
-@media screen and (max-width: 400px) {
-
-    @keyframes letterPop {
-        from {width: 60px; height: 60px; margin: 3px}
-        to {width: 62px; height: 62px; margin: 2px}
-    }
-
-    .guessEmpty, .guessWhite, .guessGray, .guessYellow, .guessGreen {
-        width: 60px;
-        margin: 3px;
-    }
-
-    .flipContainer {
-        width: 60px;
-        margin: 3px;
-    }
-}
-*/
